@@ -10,19 +10,20 @@ import time
 
 def get_job_info(keyword, location_name, num_pages, file_path):
     
-    #seta Opitions() para abrir a tela do navegador implicitamente
+    
+    # seta Opitions() para abrir a tela do navegador implicitamente
     options = Options()
     options.add_argument('--headless')
     
-    #inicia o driver
+    # inicia o driver
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get("https://www.glassdoor.co.in/Job/Home/recentActivity.htm")
     
-    #insere a palavra chave (ex.: Data Scientist)
+    # insere a palavra chave (ex.: Data Scientist)
     search_input = driver.find_element(By.ID, 'sc.keyword')
     search_input.send_keys(keyword)
 
-    #insere a palavra localização da vaga (ex.: United States)
+    # insere a palavra localização da vaga (ex.: United States)
     location_input = driver.find_element(By.ID, 'sc.location')
     location_input.send_keys(Keys.CONTROL + 'a')
     time.sleep(2)
@@ -31,7 +32,7 @@ def get_job_info(keyword, location_name, num_pages, file_path):
     location_input.send_keys(Keys.ENTER)
     time.sleep(2)
     
-    #inicializa as listas de atributos das vagas
+    # inicializa as listas de atributos das vagas
     company_name = []
     job_title = []
     location = []
